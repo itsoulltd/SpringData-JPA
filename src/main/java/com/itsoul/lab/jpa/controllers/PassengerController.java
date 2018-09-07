@@ -1,7 +1,7 @@
 package com.itsoul.lab.jpa.controllers;
 
 import com.itsoul.lab.jpa.entites.Passenger;
-import com.itsoul.lab.jpa.repository.PassengerRepository;
+import com.itsoul.lab.jpa.repositories.PassengerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

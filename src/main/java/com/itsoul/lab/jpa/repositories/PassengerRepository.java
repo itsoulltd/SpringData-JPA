@@ -1,4 +1,4 @@
-package com.itsoul.lab.jpa.repository;
+package com.itsoul.lab.jpa.repositories;
 
 import com.itsoul.lab.jpa.entites.Passenger;
 import org.springframework.data.repository.CrudRepository;

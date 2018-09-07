@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"com.itsoul.lab.jpa.app"
 		,"com.itsoul.lab.jpa.controllers"})
-@EnableJpaRepositories("com.itsoul.lab.jpa.repository")
+@EnableJpaRepositories("com.itsoul.lab.jpa.repositories")
 @EntityScan(basePackageClasses = Passenger.class)
 public class JpaDemoApplication {
 
