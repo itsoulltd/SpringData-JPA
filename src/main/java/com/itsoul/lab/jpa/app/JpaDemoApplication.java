@@ -1,6 +1,7 @@
 package com.itsoul.lab.jpa.app;
 
 import com.itsoul.lab.jpa.entites.Passenger;
+import com.itsoul.lab.jpa.entites.Person;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,7 +14,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan(basePackages = {"com.itsoul.lab.jpa.app"
 		,"com.itsoul.lab.jpa.controllers"})
 @EnableJpaRepositories("com.itsoul.lab.jpa.repositories")
-@EntityScan(basePackageClasses = Passenger.class)
+@EntityScan(basePackageClasses = {Passenger.class, Person.class})
 public class JpaDemoApplication {
 
 	public static void main(String[] args) {

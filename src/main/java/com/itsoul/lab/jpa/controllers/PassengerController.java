@@ -19,7 +19,7 @@ public class PassengerController {
     @ResponseBody
     public Passenger findBy(String name){
         Passenger pass = passengerRepository.findByName(name);
-        System.out.println(pass.getId()+":"+pass.getAge());
+        //System.out.println(pass.getId()+":"+pass.getAge());
         return pass;
     }
 
