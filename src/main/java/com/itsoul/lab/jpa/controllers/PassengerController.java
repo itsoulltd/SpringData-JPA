@@ -30,4 +30,5 @@ public class PassengerController {
         items.forEach(passenger -> System.out.println(passenger.getName()));
         return items;
     }
+
 }
