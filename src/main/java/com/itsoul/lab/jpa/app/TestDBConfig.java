@@ -22,8 +22,8 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        entityManagerFactoryRef = "testEntityManagerFactory",
-        transactionManagerRef = "testTransactionManager",
+        entityManagerFactoryRef = "entityManagerFactory",
+        transactionManagerRef = "transactionManager",
         basePackages = {"com.itsoul.lab.jpa.repositories"}
 )
 @PropertySource("classpath:application.properties")
@@ -54,7 +54,7 @@ public class TestDBConfig {
         return dataSource;
     }
 
-    @Primary @Bean(name = "testEntityManagerFactory")
+    @Primary @Bean(name = "entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(
             EntityManagerFactoryBuilder builder
             , @Qualifier("dataSource") DataSource dataSource){
@@ -66,9 +66,9 @@ public class TestDBConfig {
                 .build();
     }
 
-    @Primary @Bean(name = "testTransactionManager")
+    @Primary @Bean(name = "transactionManager")
     public PlatformTransactionManager transactionManager(
-            @Qualifier("testEntityManagerFactory") EntityManagerFactory entityManagerFactory){
+            @Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory){
 
         return new JpaTransactionManager(entityManagerFactory);
     }
