@@ -10,11 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableAutoConfiguration
 @ComponentScan(basePackages = {"com.itsoul.lab.jpa.app"
 		,"com.itsoul.lab.jpa.controllers"})
-@EnableJpaRepositories("com.itsoul.lab.jpa.repositories")
-@EntityScan(basePackageClasses = {Passenger.class, Person.class})
 public class JpaDemoApplication {
 
 	public static void main(String[] args) {
