@@ -20,8 +20,8 @@ public class Person {
     @Column
     private Integer age;
 
-    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
-    //@Type(type = "org.hibernate.type.NumericBooleanType")
+    @Column(nullable = true)
+    @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean active;
 
     @Column
