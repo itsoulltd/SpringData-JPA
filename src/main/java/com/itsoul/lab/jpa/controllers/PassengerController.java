@@ -8,7 +8,6 @@ import com.itsoul.lab.jpa.repositories.PassengerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -40,6 +39,14 @@ public class PassengerController {
         return pass;
     }
 
+    @RequestMapping("/findAll")
+    @ResponseBody
+    public List<Passenger> findAll(){
+        List<Passenger> items = (List<Passenger>) passengerRepository.findAll();
+        items.forEach(passenger -> System.out.println(passenger.getName()));
+        return items;
+    }
+
     @RequestMapping("/findByName")
     @ResponseBody @SuppressWarnings("Duplicates")
     @Transactional
@@ -57,14 +64,6 @@ public class PassengerController {
             pass.setName(e.getMessage());
         }
         return pass;
-    }
-
-    @RequestMapping("/findAll")
-    @ResponseBody
-    public List<Passenger> findAll(){
-        List<Passenger> items = (List<Passenger>) passengerRepository.findAll();
-        items.forEach(passenger -> System.out.println(passenger.getName()));
-        return items;
     }
 
     @Autowired @Qualifier("JPQLExecutorDAO")
