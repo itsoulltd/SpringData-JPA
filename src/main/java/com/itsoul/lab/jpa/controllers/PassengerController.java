@@ -8,10 +8,12 @@ import com.itsoul.lab.jpa.repositories.PassengerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.transaction.Transactional;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -63,6 +65,26 @@ public class PassengerController {
         List<Passenger> items = (List<Passenger>) passengerRepository.findAll();
         items.forEach(passenger -> System.out.println(passenger.getName()));
         return items;
+    }
+
+    @Autowired @Qualifier("JPQLExecutorPAX")
+    private JPQLExecutor insertExecutor;
+
+    @RequestMapping("/insert")
+    @ResponseBody
+    public Passenger createNew(String name, Integer age, String sex){
+        Passenger pass = new Passenger();
+        if (name != null) pass.setName(name);
+        if (age != null) pass.setAge(age);
+        if (sex != null) pass.setSex(sex);
+        try {
+            pass.insert(insertExecutor);
+        } catch (SQLException e) {
+            pass.setName(e.getMessage());
+            pass.setSex(null);
+            pass.setAge(null);
+        }
+        return pass;
     }
 
 }

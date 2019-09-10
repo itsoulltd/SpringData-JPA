@@ -1,6 +1,7 @@
 package com.itsoul.lab.jpa.app;
 
 import com.it.soul.lab.jpql.service.JPQLExecutor;
+import com.it.soul.lab.jpql.service.ORMController;
 import com.it.soul.lab.sql.SQLExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -32,6 +33,13 @@ public class BeanConfig {
     @Bean("JPQLExecutor")
     JPQLExecutor jpqlExecutor(){
         JPQLExecutor executor = new JPQLExecutor(manager);
+        return executor;
+    }
+
+    @Bean("JPQLExecutorPAX")
+    JPQLExecutor jpqlExecutorPAX(){
+        ORMController controller = new ORMController("testDB-debug");
+        JPQLExecutor executor = new JPQLExecutor(controller.getEntityManager());
         return executor;
     }
 
