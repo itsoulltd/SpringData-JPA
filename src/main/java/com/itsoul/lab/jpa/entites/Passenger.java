@@ -1,11 +1,13 @@
 package com.itsoul.lab.jpa.entites;
 
+import com.it.soul.lab.sql.entity.PrimaryKey;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Passenger")
-public class Passenger {
-    @Id
+public class Passenger extends com.it.soul.lab.sql.entity.Entity {
+    @Id @PrimaryKey(name = "id", autoIncrement = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 

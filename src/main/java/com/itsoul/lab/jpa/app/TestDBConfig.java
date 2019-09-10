@@ -22,8 +22,6 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        entityManagerFactoryRef = "entityManagerFactory",
-        transactionManagerRef = "transactionManager",
         basePackages = {"com.itsoul.lab.jpa.repositories"}
 )
 @PropertySource("classpath:application.properties")
@@ -41,9 +39,9 @@ public class TestDBConfig {
     @Value("${spring.datasource.password}")
     String password;
 
-    @Primary @Bean(name = "dataSource")
+    @Primary
+    @Bean(name = "dataSource")
     public DataSource dataSource(){
-
         DataSource dataSource = DataSourceBuilder
                 .create()
                 .username(username)
@@ -54,11 +52,11 @@ public class TestDBConfig {
         return dataSource;
     }
 
-    @Primary @Bean(name = "entityManagerFactory")
+    @Primary
+    @Bean(name = "entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(
             EntityManagerFactoryBuilder builder
             , @Qualifier("dataSource") DataSource dataSource){
-
         return builder
                 .dataSource(dataSource)
                 .packages("com.itsoul.lab.jpa.entites")
@@ -66,10 +64,10 @@ public class TestDBConfig {
                 .build();
     }
 
-    @Primary @Bean(name = "transactionManager")
+    @Primary
+    @Bean(name = "transactionManager")
     public PlatformTransactionManager transactionManager(
             @Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory){
-
         return new JpaTransactionManager(entityManagerFactory);
     }
 

@@ -18,8 +18,12 @@ public class PassengerController {
     @RequestMapping("/find")
     @ResponseBody
     public Passenger findBy(String name){
-        Passenger pass = passengerRepository.findByName(name);
-        //System.out.println(pass.getId()+":"+pass.getAge());
+        List<Passenger> passengers = passengerRepository.findByName(name);
+        if (passengers != null && passengers.size() > 0) {
+            return passengers.get(0);
+        }
+        Passenger pass = new Passenger();
+        pass.setName("Not Found!");
         return pass;
     }
 

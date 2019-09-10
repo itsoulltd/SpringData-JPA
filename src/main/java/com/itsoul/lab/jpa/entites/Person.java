@@ -1,19 +1,16 @@
 package com.itsoul.lab.jpa.entites;
 
-import com.itsoul.lab.jpa.entites.converters.TimeStampConverter;
+import com.it.soul.lab.sql.entity.PrimaryKey;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Date;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Entity
-public class Person {
-    @Id
+public class Person extends com.it.soul.lab.sql.entity.Entity {
+    @Id @PrimaryKey(name = "uuid")
     private String uuid;
     @Column
     private String name;
