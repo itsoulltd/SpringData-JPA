@@ -17,7 +17,7 @@ import java.util.Random;
 import java.util.logging.Logger;
 
 @Component
-public class ContextRefreshEventHandler {
+public class JpaDemoBootsStrap {
 
     enum Sex{
         Male,
