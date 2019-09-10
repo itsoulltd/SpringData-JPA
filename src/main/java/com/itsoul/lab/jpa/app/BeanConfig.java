@@ -32,13 +32,15 @@ public class BeanConfig {
 
     @Bean("JPQLExecutor")
     JPQLExecutor jpqlExecutor(){
+        //WE ONLY-CAN READ WITH THIS:
         JPQLExecutor executor = new JPQLExecutor(manager);
         return executor;
     }
 
-    @Bean("JPQLExecutorPAX")
-    JPQLExecutor jpqlExecutorPAX(){
+    @Bean("JPQLExecutorDAO")
+    JPQLExecutor jpqlExecutorDao(){
         ORMController controller = new ORMController("testDB-debug");
+        //WE CAN INSERT/UPDATE?DELETE/READ WITH THIS:
         JPQLExecutor executor = new JPQLExecutor(controller.getEntityManager());
         return executor;
     }

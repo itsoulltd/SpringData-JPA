@@ -67,7 +67,7 @@ public class PassengerController {
         return items;
     }
 
-    @Autowired @Qualifier("JPQLExecutorPAX")
+    @Autowired @Qualifier("JPQLExecutorDAO")
     private JPQLExecutor insertExecutor;
 
     @RequestMapping("/insert")
