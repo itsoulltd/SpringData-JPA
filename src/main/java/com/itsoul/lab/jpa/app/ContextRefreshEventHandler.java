@@ -7,6 +7,7 @@ import com.it.soul.lab.sql.query.SQLQuery;
 import com.it.soul.lab.sql.query.SQLScalarQuery;
 import com.itsoul.lab.jpa.entites.Passenger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -27,7 +28,7 @@ public class ContextRefreshEventHandler {
     String[] names = new String[]{"Mrs.Sohana","Mr.Towhid","Mr.Tanvir","Miss.Sumaiya","Miss.Tusin"};
     Integer[] ages = new Integer[] {15, 18, 28, 26, 32, 34, 25, 67};
 
-    @Autowired
+    @Autowired @Qualifier("SQLExecutor")
     SQLExecutor executor;
 
     private Logger log = Logger.getLogger(this.getClass().getSimpleName());
