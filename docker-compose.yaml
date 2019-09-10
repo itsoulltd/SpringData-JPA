@@ -10,17 +10,17 @@ services:
       ports:
           - 3316:3306
 
-   spring-jsql-service:
-         build:
-            context: .
-            dockerfile: Dockerfile
-         environment:
-            app.db.testdb.host: mysql-test-db
-            app.db.testdb.port: 3306
-            app.db.testdb.name: testDB
-            app.db.testdb.username: root
-            app.db.testdb.password: towhid@123
-         ports:
-            - 8085:8080
-         depends_on:
-            - mysql-test-db
+#   spring-jsql-service:
+#         build:
+#            context: .
+#            dockerfile: Dockerfile
+#         environment:
+#            app.db.testdb.host: mysql-test-db
+#            app.db.testdb.port: 3306
+#            app.db.testdb.name: testDB
+#            app.db.testdb.username: root
+#            app.db.testdb.password: towhid@123
+#         ports:
+#            - 8085:8080
+#         depends_on:
+#            - mysql-test-db

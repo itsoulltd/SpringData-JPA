@@ -7,8 +7,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Passenger")
 public class Passenger extends com.it.soul.lab.sql.entity.Entity {
-    @Id @PrimaryKey(name = "id", autoIncrement = true)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @PrimaryKey(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
